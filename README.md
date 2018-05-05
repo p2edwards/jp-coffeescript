@@ -1,3 +1,9 @@
+```
+WIP -- Seeing if I can quickly hacking LiveScript support in Jupyter. Taking the Ctrl-F approach.
+  Goal is to be done by tonight. -- Phil
+Warning: Not done
+```
+
 # jp-CoffeeScript: A CoffeeScript Kernel for the Jupyter Notebook
 
 jp-CoffeeScript is an [`npm` package](https://www.npmjs.com/) that implements a

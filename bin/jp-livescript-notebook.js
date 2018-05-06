@@ -53,11 +53,11 @@ parseCommandArgs(context, {
     flagPrefix: "jp",
 
     usageHeader: [
-        "jp-CoffeeScript Notebook",
+        "jp-LiveScript Notebook",
         "",
         "Usage:",
         "",
-        "    jp-coffee-notebook <options>",
+        "    jp-livescript-notebook <options>",
     ].join("\n"),
 
     usageFooter: [

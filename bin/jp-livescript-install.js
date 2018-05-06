@@ -52,11 +52,11 @@ parseCommandArgs(context, {
     installer: true,
 
     usageHeader: [
-        "jp-CoffeeScript Kernel Installer",
+        "jp-LiveScript Kernel Installer",
         "",
         "Usage:",
         "",
-        "    jp-coffe-install <options>",
+        "    jp-livescript-install <options>",
     ].join("\n"),
 });
 

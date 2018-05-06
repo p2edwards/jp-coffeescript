@@ -55,11 +55,11 @@ parseCommandArgs(context, {
     flagPrefix: "jp",
 
     usageHeader: [
-        "jp-CoffeeScript Console",
+        "jp-LiveScript Console",
         "",
         "Usage:",
         "",
-        "    jp-coffee-console <options>",
+        "    jp-livescript-console <options>",
     ].join("\n"),
 
     usageFooter: [

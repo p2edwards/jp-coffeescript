@@ -1,36 +1,42 @@
 {
-    "name": "jp-coffeescript",
-    "version": "1.0.4",
-    "description": "jp-CoffeeScript is a CoffeeScript kernel for the Jupyter notebook",
+    "name": "jp-livescript",
+    "version": "1.0.0",
+    "description": "jp-livescript is a LiveScript kernel for the Jupyter notebook",
     "keywords": [
-        "coffeescript",
+        "livescript",
         "kernel",
         "jupyter"
     ],
-    "homepage": "https://github.com/n-riesco/jp-coffeescript",
+    "homepage": "https://github.com/p2edwards/jp-livescript",
     "bugs": {
-        "url": "https://github.com/n-riesco/jp-coffeescript/issues"
+        "url": "https://github.com/p2edwards/jp-livescript/issues"
     },
     "license": "BSD-3-Clause",
     "author": {
-        "author": "Nicolas Riesco",
+        "name": "Nicolas Riesco",
         "email": "enquiries@nicolasriesco.net",
         "url": "http://www.nicolasriesco.net/"
     },
+    "contributors": [
+        {
+            "name": "Philip Edwards",
+            "url": "https://www.github.com/p2edwards"
+        }
+    ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/n-riesco/jp-coffeescript.git"
+        "url": "https://github.com/p2edwards/jp-livescript"
     },
     "bin": {
-        "jp-coffee": "bin/jp-coffeescript.js",
-        "jp-coffee-console": "bin/jp-coffeescript-console.js",
-        "jp-coffee-install": "bin/jp-coffeescript-install.js",
-        "jp-coffee-notebook": "bin/jp-coffeescript-notebook.js",
-        "jp-coffee-kernel": "lib/kernel.js"
+        "jp-livescript": "bin/jp-livescript.js",
+        "jp-livescript-console": "bin/jp-livescript-console.js",
+        "jp-livescript-install": "bin/jp-livescript-install.js",
+        "jp-livescript-notebook": "bin/jp-livescript-notebook.js",
+        "jp-livescript-kernel": "lib/kernel.js"
     },
     "dependencies": {
-        "coffee-script": "^1.7.0",
-        "jp-kernel": "1"
+        "jp-kernel": "1",
+        "livescript": "^1.5.0"
     },
     "devDependencies": {
         "debug": "2",

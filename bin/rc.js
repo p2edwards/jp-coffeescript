@@ -48,7 +48,7 @@ var DEBUG;
 var log;
 var dontLog = function dontLog() {};
 var doLog = function doLog() {
-    process.stderr.write("JP-COFFEE: ");
+    process.stderr.write("JP-LIVESCRIPT: ");
     console.error.apply(this, arguments);
 };
 
@@ -56,7 +56,7 @@ if (process.env.DEBUG) {
     DEBUG = true;
 
     try {
-        doLog = require("debug")("JP-COFFEE:");
+        doLog = require("debug")("JP-LIVESCRIPT:");
     } catch (err) {}
 }
 
@@ -131,23 +131,23 @@ function getPackageVersion(packageName) {
 var FLAGS = [{
     excludeIfInstaller: true,
     flag: "help",
-    description: "show jp-CoffeeScript and Jupyter/IPython help",
+    description: "show jp-LiveScript and Jupyter/IPython help",
     parse: function(context, arg) {
         context.args.frontend.push(arg);
     },
     showUsage: true,
 }, {
     flag: "version",
-    description: "show jp-CoffeeScript version",
+    description: "show jp-LiveScript version",
     parse: function(context, arg) {
         console.log(context.packageJSON.version);
     },
     exit: true,
 }, {
     flag: "versions",
-    description: "show jp-CoffeeScript and library versions",
+    description: "show jp-LiveScript and library versions",
     parse: function(context, arg) {
-        console.log("jp-coffeescript", context.packageJSON.version);
+        console.log("jp-LiveScript", context.packageJSON.version);
         console.log("jmp", getPackageVersion("jmp"));
         console.log("jp-kernel", getPackageVersion("jp-kernel"));
         console.log("nel", getPackageVersion("nel"));
@@ -167,7 +167,7 @@ var FLAGS = [{
     },
 }, {
     prefixedFlag: "help",
-    description: "show jp-CoffeeScript help",
+    description: "show jp-LiveScript help",
     parse: function(context, arg) {
     },
     showUsage: true,
@@ -188,7 +188,7 @@ var FLAGS = [{
     },
 }, {
     prefixedFlag: "install=[local|global]",
-    description: "install jp-CoffeeScript kernel",
+    description: "install jp-LiveScript kernel",
     parse: function(context, arg) {
         context.flag.install = getValue(arg);
         if (context.flag.install !== "local" &&
@@ -323,8 +323,8 @@ function parseCommandArgs(context, options) {
     } else {
         context.args.kernel = [
             (process.platform === "win32") ?
-                "jp-coffee-kernel.cmd" :
-                "jp-coffee-kernel",
+                "jp-livescript-kernel.cmd" :
+                "jp-livescript-kernel",
         ].concat(context.args.kernel);
     }
 
@@ -495,7 +495,7 @@ function setProtocol(context) {
             context.args.kernel.join("', '")
         ));
     } else if (context.args.frontend[1] === "console") {
-        context.args.frontend.push("--kernel=coffeescript");
+        context.args.frontend.push("--kernel=livescript");
     }
 
     if (context.frontend.majorVersion < 3 &&
@@ -521,15 +521,15 @@ function installKernelAsync(context, callback) {
 
     // Create temporary spec folder
     var tmpdir = makeTmpdir();
-    var specDir = path.join(tmpdir, "coffeescript");
+    var specDir = path.join(tmpdir, "livescript");
     fs.mkdirSync(specDir);
 
     // Create spec file
     var specFile = path.join(specDir, "kernel.json");
     var spec = {
         argv: context.args.kernel,
-        display_name: "CoffeeScript (Node.js)",
-        language: "coffeescript",
+        display_name: "LiveScript (Node.js)",
+        language: "livescript",
     };
     fs.writeFileSync(specFile, JSON.stringify(spec));
 

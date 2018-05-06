@@ -1,13 +1,11 @@
+# jp-LiveScript: A LiveScript Kernal for the Jupyter Notebook
+
 ```
-WIP -- Seeing if I can quickly hacking LiveScript support in Jupyter. Taking the Ctrl-F approach.
-  Goal is to be done by tonight. -- Phil
-Warning: Not done
+Update: It works! Wow! --phil
 ```
 
-# jp-CoffeeScript: A CoffeeScript Kernel for the Jupyter Notebook
-
-jp-CoffeeScript is an [`npm` package](https://www.npmjs.com/) that implements a
-CoffeeScript kernel for the [Jupyter notebook](http://jupyter.org/)). A Jupyter
+jp-LiveScript is an [`npm` package](https://www.npmjs.com/) (**todo: publish**) that implements a
+LiveScript kernel for the [Jupyter notebook](http://jupyter.org/)). A Jupyter
 notebook combines the creation of rich-text documents (including equations,
 plots and videos) with the execution of code in a number of programming
 languages.
@@ -24,6 +22,16 @@ languages](https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-lan
 
 ## Proof-of-Concept and Goals
 
+### jp-LiveScript (Philip Edwards)
+
+I like [LiveScript](http://livescript.net/).
+
+I wanted to try using a notebook interface with it. This Saturday I realized I could probably just make this happen in an hour or two by modding the `jp-CoffeeScript` kernal by Nicolas Riesco.
+
+This is my first open-source contribution and my first npm package ever. I'm really excited that it works.
+
+### jp-CoffeeScript (Nicolas Riesco)
+
 jp-CoffeeScript came to existence prompted by a number of requests from
 [IJavascript](http://n-riesco.github.io/ijavascript) users. See [this
 issue](https://github.com/n-riesco/nel/issues/1) for further details.
@@ -36,7 +44,6 @@ By publishing jp-CoffeeScript I'm seeking to:
 - reuse the IJavascript code and develop a Node.js library to implement Jupyter
   kernels for other languages.
 
-
 ## Installation
 
 Please, refer to the [installation notes for
@@ -46,21 +53,21 @@ For example, in Ubuntu 16.04, you can run:
 
 ```sh
 sudo apt-get install nodejs-legacy npm ipython ipython-notebook
-sudo npm install -g jp-coffeescript
+sudo npm install -g jp-livescript
 ```
 
 ## Usage
 
-jp-CoffeeScript provides 5 executables: `jp-coffee-install`,
-`jp-coffee-notebook`, `jp-coffee-console`, `jp-coffee-kernel` and `jp-coffee`.
+jp-LiveScript provides 5 executables: `jp-livescript-install`,
+`jp-livescript-notebook`, `jp-livescript-console`, `jp-livescript-kernel` and `jp-livescript`.
 Their purpose and basic use is described in the sections below. Please, refer to
 the [usage notes](http://n-riesco.github.io/ijavascript/doc/usage.md.html) for
 further details.
 
 
-### `jp-coffee-install`: jp-CoffeeScript kernel spec installer
+### `jp-livescript-install`: jp-LiveScript kernel spec installer
 
-`jp-coffee-install` registers the jp-CoffeeScript kernel with Jupyter, so that
+`jp-livescript-install` registers the jp-LiveScript kernel with Jupyter, so that
 other tools (e.g. the Jupyter notebook) can invoke it. The following command
 flags are recognised:
 
@@ -81,16 +88,16 @@ flags are recognised:
 ```
 
 
-### `jp-coffee-notebook`: jp-CoffeeScript notebook
+### `jp-livescript-notebook`: jp-CoffeeScript notebook
 
-After running `jp-coffee-install`, Jupyter notebook users can invoke the Jupyter
-notebook as usual. `jp-coffee-notebook` is provided for convenience to users of
-the IPython notebook prior to version 3. `jp-coffee-notebook` is a wrapper
+After running `jp-livescript-install`, Jupyter notebook users can invoke the Jupyter
+notebook as usual. `jp-livescript-notebook` is provided for convenience to users of
+the IPython notebook prior to version 3. `jp-livescript-notebook` is a wrapper
 around `ipython notebook`. It extends the command flags accepted by `ipython
 notebook` with the following:
 
 ```
---help                       show jp-CoffeeScript and notebook help
+--help                       show jp-LiveScript and notebook help
 --jp-debug                   enable debug messages
 --jp-help                    show this help
 --jp-hide-undefined          do not show undefined results
@@ -107,13 +114,13 @@ notebook` with the following:
 ```
 
 
-### `jp-coffee-console`: jp-CoffeeScript console
+### `jp-livescript-console`: jp-LiveScript console
 
-`jp-coffee-console` is provided for convenience to users as a wrapper around
+`jp-livescript-console` is provided for convenience to users as a wrapper around
 `jupyter console`. The following command flags are recognised:
 
 ```
---help                       show jp-CoffeeScript and notebook help
+--help                       show jp-LiveScript and notebook help
 --jp-debug                   enable debug messages
 --jp-help                    show this help
 --jp-hide-undefined          do not show undefined results
@@ -130,16 +137,16 @@ notebook` with the following:
 ```
 
 
-### `jp-coffee-kernel`: jp-CoffeeScript kernel
+### `jp-livescript-kernel`: jp-LiveScript kernel
 
-`jp-coffee-kernel` is the executable invoked by Jupyter tools (e.g. the
-notebook) and that appears in the kernel spec that `jp-coffee-install` creates
-for jp-CoffeeScript. You won't need this command, unless you want to create a
+`jp-livescript-kernel` is the executable invoked by Jupyter tools (e.g. the
+notebook) and that appears in the kernel spec that `jp-livescript-install` creates
+for jp-LiveScript. You won't need this command, unless you want to create a
 custom kernel spec.
 
 ```
 Usage:
-    jp-coffee-kernel [options] connection_file
+    jp-livescript-kernel [options] connection_file
 
 Options:
     --debug                           enable debug messages
@@ -152,14 +159,18 @@ Options:
 ```
 
 
-### `jp-coffee`: Deprecated CLI
+### `jp-livescript`: Deprecated CLI
 
-`jp-coffee` is provided for backwards-compatibility. It will be removed in the
-next major-version update. Please, use `jp-coffee-install` or
-`jp-coffee-notebook` instead.
+`jp-livescript` is provided for backwards-compatibility. It will be removed in the
+next major-version update. Please, use `jp-livescript-install` or
+`jp-livescript-notebook` instead.
 
 
 # Contributions
+
+### jp-LiveScript (Philip Edwards)
+
+### jp-CoffeeScript (Nicolas Riesco)
 
 First of all, thank you for taking the time to contribute. The maintenance of
 IJavascript is currently my priority. I would really appreciate some help.
@@ -172,3 +183,4 @@ requests, submission of tutorials, ...
 # TO DO
 
 - Add tests
+- Swap out the logos? 

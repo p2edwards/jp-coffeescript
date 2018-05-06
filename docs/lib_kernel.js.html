@@ -66,8 +66,8 @@ var console = require("console");
 var fs = require("fs");
 var path = require("path");
 
-var cs = require("coffee-script");
-var csOptions = {bare: true};
+var ls = require("livescript");
+var lsOptions = {bare: true}; //include prelude? 
 
 var Kernel = require("jp-kernel");
 
@@ -94,11 +94,11 @@ if (process.env.DEBUG) {
 
 log = global.DEBUG ? doLog : dontLog;
 
-
 // Setup session initialisation
+// p2edwards: I think this is correct 
 config.startupCallback = function startupCallback() {
-    var requirePath = require.resolve("coffee-script/register");
-    var code = 'require("' + requirePath + '");';
+    var requirePath = require.resolve("livescript/lib/node");
+    var code = "require('" + requirePath + "');";
     this.session.execute(code, {
         onSuccess: function() {
             log("startupCallback: '" + code + "' run successfuly");
@@ -109,18 +109,17 @@ config.startupCallback = function startupCallback() {
     });
 };
 
-
-// Setup coffeescript transpiler
+// Setup livescript transpiler
 config.transpile = function(code) {
-    return cs.compile(code, csOptions);
+    return ls.compile(code, lsOptions);
 };
 
 // Start kernel
 var kernel = new Kernel(config);
 
 kernel.handlers.is_complete_request = function is_complete_request(request) {
-    request.respond(this.iopubSocket, 'status', {
-        execution_state: 'busy'
+    request.respond(this.iopubSocket, "status", {
+        execution_state: "busy"
     });
 
     var content;
@@ -144,8 +143,8 @@ kernel.handlers.is_complete_request = function is_complete_request(request) {
         this.protocolVersion
     );
 
-    request.respond(this.iopubSocket, 'status', {
-        execution_state: 'idle'
+    request.respond(this.iopubSocket, "status", {
+        execution_state: "idle"
     });
 };
 
@@ -165,7 +164,7 @@ function parseCommandArguments() {
     var config = {
         cwd: process.cwd(),
         hideUndefined: true,
-        protocolVersion: "5.0",
+        protocolVersion: "5.1",
     };
 
     var usage = (
@@ -204,7 +203,7 @@ function parseCommandArguments() {
         var connectionFile;
 
         process.argv.slice(2).forEach(function(arg) {
-            for(var i = 0; i &lt; FLAGS.length; i++) {
+            for (var i = 0; i &lt; FLAGS.length; i++) {
                 var flag = FLAGS[i];
                 var label = flag[0];
                 var action = flag[1];
@@ -241,16 +240,16 @@ function parseCommandArguments() {
     var jpVersion;
     var majorVersion = parseInt(config.protocolVersion.split(".")[0]);
     if (majorVersion &lt;= 4) {
-        nodeVersion = process.versions.node.split('.')
+        nodeVersion = process.versions.node.split(".")
             .map(function(v) {
                 return parseInt(v, 10);
             });
-        protocolVersion = config.protocolVersion.split('.')
+        protocolVersion = config.protocolVersion.split(".")
             .map(function(v) {
                 return parseInt(v, 10);
             });
         config.kernelInfoReply = {
-            "language": "coffeescript",
+            "language": "livescript",
             "language_version": nodeVersion,
             "protocol_version": protocolVersion,
         };
@@ -261,21 +260,21 @@ function parseCommandArguments() {
         jpVersion = JSON.parse(fs.readFileSync(packageJsonPath)).version;
         config.kernelInfoReply = {
             "protocol_version": protocolVersion,
-            "implementation": "jp-coffeescript",
+            "implementation": "jp-livescript",
             "implementation_version": jpVersion,
             "language_info": {
-                "name": "coffeescript",
+                "name": "livescript",
                 "version": nodeVersion,
-                "mimetype": "application/coffeescript",
-                "file_extension": ".coffee",
+                "mimetype": "application/livescript",
+                "file_extension": ".ls",
             },
             "banner": (
-                "jp-coffeescript v" + jpVersion + "\n" +
-                "https://github.com/n-riesco/jp-coffeescript\n"
+                "jp-livescript v" + jpVersion + "\n" +
+                "https://github.com/n-riesco/jp-livescript\n"
             ),
             "help_links": [{
-                "text": "jp-coffeescript Homepage",
-                "url": "https://github.com/n-riesco/jp-coffeescript",
+                "text": "jp-livescript Homepage",
+                "url": "https://github.com/p2edwards/jp-livescript",
             }],
         };
     }
@@ -292,13 +291,13 @@ function parseCommandArguments() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#context">context</a></li><li><a href="global.html#parseCommandArguments">parseCommandArguments</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#Context">Context</a></li></ul><h3>Global</h3><ul><li><a href="global.html#context">context</a></li><li><a href="global.html#dispose">dispose</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#kernel">kernel</a></li><li><a href="global.html#onMessage">onMessage</a></li><li><a href="global.html#parseCommandArguments">parseCommandArguments</a></li><li><a href="global.html#run">run</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Sep 11 2017 11:29:39 GMT+0100 (BST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat May 05 2018 20:44:53 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

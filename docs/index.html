@@ -43,8 +43,8 @@
 
 
     <section>
-        <article><h1>jp-CoffeeScript: A CoffeeScript Kernel for the Jupyter Notebook</h1><p>jp-CoffeeScript is an <a href="https://www.npmjs.com/"><code>npm</code> package</a> that implements a
-CoffeeScript kernel for the <a href="http://jupyter.org/">Jupyter notebook</a>). A Jupyter
+        <article><h1>jp-LiveScript: A LiveScript Kernal for the Jupyter Notebook</h1><pre class="prettyprint source"><code>Update: It works! Wow! --phil</code></pre><p>jp-LiveScript is an <a href="https://www.npmjs.com/"><code>npm</code> package</a> (<strong>todo: publish</strong>) that implements a
+LiveScript kernel for the <a href="http://jupyter.org/">Jupyter notebook</a>). A Jupyter
 notebook combines the creation of rich-text documents (including equations,
 plots and videos) with the execution of code in a number of programming
 languages.</p>
@@ -56,7 +56,10 @@ There are kernels available for <a href="http://ipython.org/notebook.html">Pytho
 <a href="https://github.com/minad/iruby">Ruby</a>,
 <a href="https://github.com/gibiansky/IHaskell">Haskell</a> and <a href="https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages">many other
 languages</a>.</p>
-<h2>Proof-of-Concept and Goals</h2><p>jp-CoffeeScript came to existence prompted by a number of requests from
+<h2>Proof-of-Concept and Goals</h2><h3>jp-LiveScript (Philip Edwards)</h3><p>I like <a href="http://livescript.net/">LiveScript</a>.</p>
+<p>I wanted to try using a notebook interface with it. This Saturday I realized I could probably just make this happen in an hour or two by modding the <code>jp-CoffeeScript</code> kernal by Nicolas Riesco.</p>
+<p>This is my first open-source contribution and my first npm package ever. I'm really excited that it works.</p>
+<h3>jp-CoffeeScript (Nicolas Riesco)</h3><p>jp-CoffeeScript came to existence prompted by a number of requests from
 <a href="http://n-riesco.github.io/ijavascript">IJavascript</a> users. See <a href="https://github.com/n-riesco/nel/issues/1">this
 issue</a> for further details.</p>
 <p>By publishing jp-CoffeeScript I'm seeking to:</p>
@@ -72,12 +75,12 @@ kernels for other languages.</p>
 IJavascript</a>.</p>
 <p>For example, in Ubuntu 16.04, you can run:</p>
 <pre class="prettyprint source lang-sh"><code>sudo apt-get install nodejs-legacy npm ipython ipython-notebook
-sudo npm install -g jp-coffeescript</code></pre><h2>Usage</h2><p>jp-CoffeeScript provides 5 executables: <code>jp-coffee-install</code>,
-<code>jp-coffee-notebook</code>, <code>jp-coffee-console</code>, <code>jp-coffee-kernel</code> and <code>jp-coffee</code>.
+sudo npm install -g jp-livescript</code></pre><h2>Usage</h2><p>jp-LiveScript provides 5 executables: <code>jp-livescript-install</code>,
+<code>jp-livescript-notebook</code>, <code>jp-livescript-console</code>, <code>jp-livescript-kernel</code> and <code>jp-livescript</code>.
 Their purpose and basic use is described in the sections below. Please, refer to
 the <a href="http://n-riesco.github.io/ijavascript/doc/usage.md.html">usage notes</a> for
 further details.</p>
-<h3><code>jp-coffee-install</code>: jp-CoffeeScript kernel spec installer</h3><p>'jp-coffee-install` registers the jp-CoffeeScript kernel with Jupyter, so that
+<h3><code>jp-livescript-install</code>: jp-LiveScript kernel spec installer</h3><p><code>jp-livescript-install</code> registers the jp-LiveScript kernel with Jupyter, so that
 other tools (e.g. the Jupyter notebook) can invoke it. The following command
 flags are recognised:</p>
 <pre class="prettyprint source"><code>--debug                   enable debug messages
@@ -92,12 +95,12 @@ flags are recognised:</p>
 --version                 show kernel version
 --versions                show kernel and library versions
 --working-dir=path        set kernel working directory
-                          (default = current working directory)</code></pre><h3><code>jp-coffee-notebook</code>: jp-CoffeeScript notebook</h3><p>After running <code>jp-coffee-install</code>, Jupyter notebook users can invoke the Jupyter
-notebook as usual. <code>jp-coffee-notebook</code> is provided for convenience to users of
-the IPython notebook prior to version 3. <code>jp-coffee-notebook</code> is a wrapper
+                          (default = current working directory)</code></pre><h3><code>jp-livescript-notebook</code>: jp-CoffeeScript notebook</h3><p>After running <code>jp-livescript-install</code>, Jupyter notebook users can invoke the Jupyter
+notebook as usual. <code>jp-livescript-notebook</code> is provided for convenience to users of
+the IPython notebook prior to version 3. <code>jp-livescript-notebook</code> is a wrapper
 around <code>ipython notebook</code>. It extends the command flags accepted by <code>ipython
 notebook</code> with the following:</p>
-<pre class="prettyprint source"><code>--help                       show jp-CoffeeScript and notebook help
+<pre class="prettyprint source"><code>--help                       show jp-LiveScript and notebook help
 --jp-debug                   enable debug messages
 --jp-help                    show this help
 --jp-hide-undefined          do not show undefined results
@@ -110,9 +113,9 @@ notebook</code> with the following:</p>
 --jp-working-dir=path        set kernel working directory
                              (default = current working directory)
 --version                    show kernel version
---versions                   show kernel and library versions</code></pre><h3><code>jp-coffee-console</code>: jp-CoffeeScript console</h3><p><code>jp-coffee-console</code> is provided for convenience to users as a wrapper around
+--versions                   show kernel and library versions</code></pre><h3><code>jp-livescript-console</code>: jp-LiveScript console</h3><p><code>jp-livescript-console</code> is provided for convenience to users as a wrapper around
 <code>jupyter console</code>. The following command flags are recognised:</p>
-<pre class="prettyprint source"><code>--help                       show jp-CoffeeScript and notebook help
+<pre class="prettyprint source"><code>--help                       show jp-LiveScript and notebook help
 --jp-debug                   enable debug messages
 --jp-help                    show this help
 --jp-hide-undefined          do not show undefined results
@@ -125,12 +128,12 @@ notebook</code> with the following:</p>
 --jp-working-dir=path        set kernel working directory
                              (default = current working directory)
 --version                    show kernel version
---versions                   show kernel and library versions</code></pre><h3><code>jp-coffee-kernel</code>: jp-CoffeeScript kernel</h3><p><code>jp-coffee-kernel</code> is the executable invoked by Jupyter tools (e.g. the
-notebook) and that appears in the kernel spec that <code>jp-coffee-install</code> creates
-for jp-CoffeeScript. You won't need this command, unless you want to create a
+--versions                   show kernel and library versions</code></pre><h3><code>jp-livescript-kernel</code>: jp-LiveScript kernel</h3><p><code>jp-livescript-kernel</code> is the executable invoked by Jupyter tools (e.g. the
+notebook) and that appears in the kernel spec that <code>jp-livescript-install</code> creates
+for jp-LiveScript. You won't need this command, unless you want to create a
 custom kernel spec.</p>
 <pre class="prettyprint source"><code>Usage:
-    jp-coffee-kernel [options] connection_file
+    jp-livescript-kernel [options] connection_file
 
 Options:
     --debug                           enable debug messages
@@ -139,10 +142,10 @@ Options:
     --session-working-dir=path        set session working directory
     --show-undefined                  show undefined results
     --startup-script=path             run script on startup
-                                      (path can be a file or a folder)</code></pre><h3><code>jp-coffee</code>: Deprecated CLI</h3><p><code>jp-coffee</code> is provided for backwards-compatibility. It will be removed in the
-next major-version update. Please, use <code>jp-coffee-install</code> or
-<code>jp-coffee-notebook</code> instead.</p>
-<h1>Contributions</h1><p>First of all, thank you for taking the time to contribute. The maintenance of
+                                      (path can be a file or a folder)</code></pre><h3><code>jp-livescript</code>: Deprecated CLI</h3><p><code>jp-livescript</code> is provided for backwards-compatibility. It will be removed in the
+next major-version update. Please, use <code>jp-livescript-install</code> or
+<code>jp-livescript-notebook</code> instead.</p>
+<h1>Contributions</h1><h3>jp-LiveScript (Philip Edwards)</h3><h3>jp-CoffeeScript (Nicolas Riesco)</h3><p>First of all, thank you for taking the time to contribute. The maintenance of
 IJavascript is currently my priority. I would really appreciate some help.
 Please, read <a href="CONTRIBUTING.md">CONTRIBUTING</a> and use the <a href="https://github.com/n-riesco/jp-coffeescript/issues">issue
 tracker</a> for any
@@ -150,6 +153,7 @@ contributions: support requests, bug reports, enhancement requests, pull
 requests, submission of tutorials, ...</p>
 <h1>TO DO</h1><ul>
 <li>Add tests</li>
+<li>Swap out the logos? </li>
 </ul></article>
     </section>
 
@@ -161,13 +165,13 @@ requests, submission of tutorials, ...</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#context">context</a></li><li><a href="global.html#parseCommandArguments">parseCommandArguments</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#Context">Context</a></li></ul><h3>Global</h3><ul><li><a href="global.html#context">context</a></li><li><a href="global.html#dispose">dispose</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#kernel">kernel</a></li><li><a href="global.html#onMessage">onMessage</a></li><li><a href="global.html#parseCommandArguments">parseCommandArguments</a></li><li><a href="global.html#run">run</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Sep 11 2017 11:29:39 GMT+0100 (BST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat May 05 2018 20:44:53 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

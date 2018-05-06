@@ -1,10 +1,6 @@
 # jp-LiveScript: A LiveScript Kernal for the Jupyter Notebook
 
-```
-Update: It works! Wow! --phil
-```
-
-jp-LiveScript is an [`npm` package](https://www.npmjs.com/) (**todo: publish**) that implements a
+jp-LiveScript is an [`npm` package](https://www.npmjs.com/) that implements a
 LiveScript kernel for the [Jupyter notebook](http://jupyter.org/)). A Jupyter
 notebook combines the creation of rich-text documents (including equations,
 plots and videos) with the execution of code in a number of programming
@@ -24,11 +20,9 @@ languages](https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-lan
 
 ### jp-LiveScript (Philip Edwards)
 
-I like [LiveScript](http://livescript.net/).
+I like [LiveScript](http://livescript.net/). I want to explore using a notebook interface with it. 
 
-I wanted to try using a notebook interface with it. This Saturday I realized I could probably just make this happen in an hour or two by modding the `jp-CoffeeScript` kernal by Nicolas Riesco.
-
-This is my first open-source contribution and my first npm package ever. I'm really excited that it works.
+Nicolas Riesco made this really simple. I just modded `n-riesco/jp-CoffeeScript`.
 
 ### jp-CoffeeScript (Nicolas Riesco)
 
@@ -170,6 +164,9 @@ next major-version update. Please, use `jp-livescript-install` or
 
 ### jp-LiveScript (Philip Edwards)
 
+This is my first open-source thing and my first npm package ever. At this point I'm
+excited that it works for me.
+
 ### jp-CoffeeScript (Nicolas Riesco)
 
 First of all, thank you for taking the time to contribute. The maintenance of
@@ -183,4 +180,3 @@ requests, submission of tutorials, ...
 # TO DO
 
 - Add tests
-- Swap out the logos? 

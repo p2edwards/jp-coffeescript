@@ -35,8 +35,8 @@
         "jp-livescript-kernel": "lib/kernel.js"
     },
     "dependencies": {
-        "jp-kernel": "1",
-        "livescript": "^1.5.0"
+        "jp-kernel": "2.0.0",
+        "livescript": "^1.6.0"
     },
     "devDependencies": {
         "debug": "2",
